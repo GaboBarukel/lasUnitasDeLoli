@@ -1,0 +1,7 @@
+.treatments {
+  padding: 0.1rem;
+  flex: 2 1 30rem;
+  width: calc(300px + 20vw);
+  display: flex;
+  flex-direction: column;
+}

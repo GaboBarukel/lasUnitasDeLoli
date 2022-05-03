@@ -1,0 +1,19 @@
+.home {
+  padding: 0.1rem;
+  flex: 2 1 30rem;
+  width: calc(300px + 20vw);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bolder;
+  letter-spacing: 0.7rem;
+}
+
+.final {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}

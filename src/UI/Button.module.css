@@ -1,0 +1,13 @@
+.button {
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 2px solid #64463dff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #b7897bff;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
