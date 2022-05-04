@@ -13,13 +13,13 @@ const Calendar = (props) => {
       setDates(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getDates();
-  }, []);
+  }, [datesCollectionRef]);
 
   return (
     <div className={classes.calendar}>
       {dates.map((date) => {
         return (
-          <h2>
+          <h2 key={date.id}>
             Nombre: {date.name} <br />
             Tel: {date.tel} <br />
             Tratamiento: {date.treatment}
