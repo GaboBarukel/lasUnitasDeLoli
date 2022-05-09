@@ -1,0 +1,11 @@
+.timeTable {
+  font-size: 2rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.timeTable td {
+  border: 1px solid black;
+  padding: 10px 20px;
+}
