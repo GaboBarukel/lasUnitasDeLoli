@@ -1,25 +1,36 @@
 .imgCard {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  width: calc(400px + 60vw);
-  flex: 3 1 30rem;
-  height: calc(400px + 10vw);
-  max-width: calc(200px + 30vw);
-  min-width: calc(200px + 20vw);
+  flex: 1 2 40rem;
+  height: calc(200px + 40vw);
+  width: calc(200px + 20vw);
+
+  margin: 0;
+  box-sizing: border-box;
   overflow: hidden;
   border-radius: 30px;
   border: 1px solid #64463dff;
+  border-radius: 30px;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .img {
+  max-height: 100%;
   max-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
   object-fit: cover;
   object-position: center;
+}
+
+@media (min-width: 42rem) {
+  .img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 35rem) {
+  .imgcard {
+    flex: 1 1 23rem;
+    /* line-height: 1; */
+    margin: 0;
+  }
 }

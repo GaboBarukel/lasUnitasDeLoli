@@ -1,4 +1,4 @@
-import pic from "../Resources/nails.jpg";
+import pic from "../Resources/nails5.jpg";
 import classes from "./Image.module.css";
 
 const Image = () => {

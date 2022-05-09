@@ -8,8 +8,14 @@
 
 body {
   background-color: #b7897bff;
-  line-height: 1.55;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  line-height: 1.2;
+  font-size: clamp(1rem, 1.2rem, 3rem);
+
+  padding: 0;
+}
+
+@media (min-width: 35rem) {
+  body {
+    line-height: 1.1;
+  }
 }

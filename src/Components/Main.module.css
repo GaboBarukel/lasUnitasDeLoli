@@ -1,1 +1,19 @@
+.main {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  justify-content: space-around;
 
+  margin: 0;
+  padding: 0.1 0.4rem;
+
+  min-height: auto;
+  max-width: 94vw;
+}
+
+@media (min-width: 40rem) {
+  .main {
+    padding: 0.2vw 0.2vw;
+    margin: 0;
+  }
+}

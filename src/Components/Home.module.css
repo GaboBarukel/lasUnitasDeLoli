@@ -1,19 +1,46 @@
 .home {
-  padding: 0.1rem;
-  flex: 2 1 30rem;
-  width: calc(300px + 20vw);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: bolder;
-  letter-spacing: 0.7rem;
+  margin: 1rem 0.5rem 0.5rem;
+  font-size: calc(1rem + 2.5vw);
+  font-weight: bold;
+  letter-spacing: 0.4rem;
+}
+
+.presentation {
+  font-size: calc(1rem + 1.2vw);
+  margin: 0.6rem auto;
+  letter-spacing: 0.1rem;
 }
 
 .final {
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 0.1rem;
+  font-size: calc(1rem + 1.2vw);
+  font-weight: 600;
+  letter-spacing: 0.3rem;
+}
+
+@media (min-width: 35rem) {
+  .home {
+    line-height: 1.1;
+    flex: 1 0 20rem;
+    margin: 0 0.2rem;
+    padding: 0 1rem;
+  }
+  .title {
+    letter-spacing: 0.7rem;
+  }
+  .presentation {
+    letter-spacing: 0.2rem;
+  }
+}
+
+@media (min-width: 49rem) and (max-width: 72rem) {
+  .title {
+    letter-spacing: 0.2rem;
+  }
 }
