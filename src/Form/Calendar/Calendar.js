@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // import { db } from "../../firebase-config";
 // import { collection, getDocs } from "firebase/firestore";
 import classes from "./Calendar.module.css";
@@ -16,12 +16,121 @@ const Calendar = (props) => {
   //   };
   //   getDates();
   // }, [datesCollectionRef]);
+  // const [showTimeTable, setShowTimeTable] = useState(false);
+  // const [dayTimeTable, setDayTimeTable] = useState({});
   const [weekDays, setWeekDays] = useState([]);
-  const [showTimeTable, setShowTimeTable] = useState(false);
   const weekSelectorHandler = (event) => {
     let weekDates = parseDates(event.target.value);
     setWeekDays(weekDates);
   };
+
+  const weekTimeTableDummy = [
+    {
+      id: "lunes, 16/05",
+      eight: "busy",
+      nine: "",
+      ten: "",
+      eleven: "",
+      twelve: "",
+      thirteen: "",
+      fourteen: "",
+      fifteen: "",
+      sixteen: "",
+      seventeen: "",
+      eighteen: "",
+      nineteen: "",
+    },
+    {
+      id: "martes, 17/05",
+      eight: "",
+      nine: "busy",
+      ten: "",
+      eleven: "",
+      twelve: "",
+      thirteen: "",
+      fourteen: "",
+      fifteen: "",
+      sixteen: "",
+      seventeen: "",
+      eighteen: "",
+      nineteen: "",
+    },
+    {
+      id: "miércoles, 18/05",
+      eight: "",
+      nine: "",
+      ten: "busy",
+      eleven: "",
+      twelve: "",
+      thirteen: "",
+      fourteen: "",
+      fifteen: "",
+      sixteen: "",
+      seventeen: "",
+      eighteen: "",
+      nineteen: "",
+    },
+    {
+      id: "jueves, 19/05",
+      eight: "",
+      nine: "",
+      ten: "",
+      eleven: "busy",
+      twelve: "",
+      thirteen: "",
+      fourteen: "",
+      fifteen: "",
+      sixteen: "",
+      seventeen: "",
+      eighteen: "",
+      nineteen: "",
+    },
+    {
+      id: "viernes, 20/05",
+      eight: "",
+      nine: "",
+      ten: "",
+      eleven: "",
+      twelve: "busy",
+      thirteen: "",
+      fourteen: "",
+      fifteen: "",
+      sixteen: "",
+      seventeen: "",
+      eighteen: "",
+      nineteen: "",
+    },
+    {
+      id: "sábado, 21/05",
+      eight: "",
+      nine: "",
+      ten: "",
+      eleven: "",
+      twelve: "",
+      thirteen: "busy",
+      fourteen: "",
+      fifteen: "",
+      sixteen: "",
+      seventeen: "",
+      eighteen: "",
+      nineteen: "",
+    },
+    {
+      id: "domingo, 22/05",
+      eight: "",
+      nine: "",
+      ten: "",
+      eleven: "",
+      twelve: "",
+      thirteen: "",
+      fourteen: "busy",
+      fifteen: "",
+      sixteen: "",
+      seventeen: "",
+      eighteen: "",
+      nineteen: "",
+    },
+  ];
 
   const parseDates = (inp) => {
     let year = parseInt(inp.slice(0, 4), 10);
@@ -49,22 +158,12 @@ const Calendar = (props) => {
     console.log(days[0].slice(-5));
     return days;
   };
-  const selectDayHandler = () => {
-    if (!showTimeTable) {
-      setShowTimeTable(true);
-    } else {
-      setShowTimeTable(false);
-    }
-  };
 
   return (
     <div className={classes.calendar}>
-      {weekDays.map((day) => (
-        <h2 key={day} id={day} onClick={selectDayHandler}>
-          {day}
-        </h2>
+      {weekTimeTableDummy.map((dayTimeTable) => (
+        <TimeTable onTimeTableData={dayTimeTable} key={dayTimeTable.id} />
       ))}
-      {showTimeTable && <TimeTable />}
       <Input
         type="week"
         id="weekSelector"

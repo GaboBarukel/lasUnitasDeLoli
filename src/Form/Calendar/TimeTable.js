@@ -2,66 +2,194 @@ import { useState } from "react";
 
 import classes from "./TimeTable.module.css";
 
-const TimeTable = () => {
-  const [selectedTime, setSelectedTime] = useState("");
+const TimeTable = (props) => {
+  // const [selectedTime, setSelectedTime] = useState("");
+  // const boxClickHandler = (event) => {
+  //   if (selectedTime.id) {
+  //     if (event.target.id !== selectedTime.id) {
+  //       selectedTime.className = '{classes.free}';
+  //       setSelectedTime(event.target);
+  //       event.target.className = "{classes.selected}";
+  //     }
+  //   } else if (!selectedTime.id) {
+  //     setSelectedTime(event.target);
+  //     event.target.className = "{classes.selected}";
+  //   }
+  // };
 
-  const boxClickHandler = (event) => {
-    if (selectedTime.id) {
-      if (event.target.id !== selectedTime.id) {
-        selectedTime.style.backgroundColor = "#c99e9aff";
-        setSelectedTime(event.target);
-        event.target.style.backgroundColor = "white";
-      }
-    } else if (!selectedTime.id) {
-      setSelectedTime(event.target);
-      event.target.style.backgroundColor = "white";
+  const [showTimeTable, setShowTimeTable] = useState(false);
+
+  const showTimeTableHandler = () => {
+    if (!showTimeTable) {
+      setShowTimeTable(true);
+    } else {
+      setShowTimeTable(false);
     }
   };
 
   return (
     <table className={classes.timeTable} id="calendar">
-      <tbody>
+      <thead>
         <tr>
-          <td onClick={boxClickHandler} className="free" id="08:00">
-            08:00
-          </td>
-          <td onClick={boxClickHandler} className="free" id="09:00">
-            09:00
-          </td>
-          <td onClick={boxClickHandler} className="free" id="10:00">
-            10:00
-          </td>
-          <td onClick={boxClickHandler} className="free" id="11:00">
-            11:00
-          </td>
-          <td onClick={boxClickHandler} className="free" id="12:00">
-            12:00
-          </td>
-          <td onClick={boxClickHandler} className="free" id="13:00">
-            13:00
-          </td>
+          <th colSpan="6" onClick={showTimeTableHandler}>
+            {props.onTimeTableData.id}
+          </th>
         </tr>
-        <tr>
-          <td onClick={boxClickHandler} className="free" id="14:00">
-            14:00
-          </td>
-          <td onClick={boxClickHandler} className="free" id="15:00">
-            15:00
-          </td>
-          <td onClick={boxClickHandler} className="free" id="16:00">
-            16:00
-          </td>
-          <td onClick={boxClickHandler} className="free" id="17:00">
-            17:00
-          </td>
-          <td onClick={boxClickHandler} className="free" id="18:00">
-            18:00
-          </td>
-          <td onClick={boxClickHandler} className="free" id="19:00">
-            19:00
-          </td>
-        </tr>
-      </tbody>
+      </thead>
+      {showTimeTable && (
+        <tbody>
+          <tr>
+            <td
+              className={
+                (props.onTimeTableData.eight === "busy" ? classes.busy : "") ||
+                (props.onTimeTableData.eight === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="8"
+            >
+              08:00
+            </td>
+            <td
+              className={
+                (props.onTimeTableData.nine === "busy" ? classes.busy : "") ||
+                (props.onTimeTableData.nine === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="9"
+            >
+              09:00
+            </td>
+            <td
+              className={
+                (props.onTimeTableData.ten === "busy" ? classes.busy : "") ||
+                (props.onTimeTableData.ten === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="10"
+            >
+              10:00
+            </td>
+            <td
+              className={
+                (props.onTimeTableData.eleven === "busy" ? classes.busy : "") ||
+                (props.onTimeTableData.eleven === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="11"
+            >
+              11:00
+            </td>
+            <td
+              className={
+                (props.onTimeTableData.twelve === "busy" ? classes.busy : "") ||
+                (props.onTimeTableData.twelve === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="12"
+            >
+              12:00
+            </td>
+            <td
+              className={
+                (props.onTimeTableData.thirteen === "busy"
+                  ? classes.busy
+                  : "") ||
+                (props.onTimeTableData.thirteen === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="13"
+            >
+              13:00
+            </td>
+          </tr>
+          <tr>
+            <td
+              className={
+                (props.onTimeTableData.fourteen === "busy"
+                  ? classes.busy
+                  : "") ||
+                (props.onTimeTableData.fourteen === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="14"
+            >
+              14:00
+            </td>
+            <td
+              className={
+                (props.onTimeTableData.fifteen === "busy"
+                  ? classes.busy
+                  : "") ||
+                (props.onTimeTableData.fifteen === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="15"
+            >
+              15:00
+            </td>
+            <td
+              className={
+                (props.onTimeTableData.sixteen === "busy"
+                  ? classes.busy
+                  : "") ||
+                (props.onTimeTableData.sixteen === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="16"
+            >
+              16:00
+            </td>
+            <td
+              className={
+                (props.onTimeTableData.seventeen === "busy"
+                  ? classes.busy
+                  : "") ||
+                (props.onTimeTableData.seventeen === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="17"
+            >
+              17:00
+            </td>
+            <td
+              className={
+                (props.onTimeTableData.eighteen === "busy"
+                  ? classes.busy
+                  : "") ||
+                (props.onTimeTableData.eighteen === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="18"
+            >
+              18:00
+            </td>
+            <td
+              className={
+                (props.onTimeTableData.nineteen === "busy"
+                  ? classes.busy
+                  : "") ||
+                (props.onTimeTableData.nineteen === "selected"
+                  ? classes.selected
+                  : "")
+              }
+              id="19"
+            >
+              19:00
+            </td>
+          </tr>
+        </tbody>
+      )}
     </table>
   );
 };
