@@ -1,25 +1,26 @@
-import classes from "./Home.module.css";
+import Button from "../../UI/Button";
 
-import Button from "../UI/Button";
+import classes from "./Greeting.module.css";
 
-const Home = (props) => {
+const Greeting = (props) => {
   return (
-    <div className={classes.home}>
+    <>
       <h1 className={classes.title}>LAS UÑITAS DE LOLI</h1>
       <p className={classes.presentation}>
         Soy Loli Gimenez. Soy profesional de la salud y cuento con un amplio
         conocimiento y experiencia en esmaltados y cuidados de uñas y manos. Mi
         propuesta se centra en poder ofrecer salud y belleza para tus manos en
-        cada tratamiento que realizo.{" "}
+        cada tratamiento que realizo.
       </p>
       <p className={classes.final}>
         <span>Las manos son símbolos, y a veces, revelaciones…</span>
       </p>
+      <Button onClick={props.onDisplay}>VER TRATAMIENTOS</Button>
       <Button type="button" onClick={props.onClick}>
-        SIGUIENTE
+        PEDIR TURNO
       </Button>
-    </div>
+    </>
   );
 };
 
-export default Home;
+export default Greeting;

@@ -1,0 +1,15 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+@media (min-width: 35rem) {
+  .home {
+    line-height: 1.1;
+    flex: 1 0 20rem;
+    margin: 0 0.2rem;
+    padding: 0 1rem;
+  }
+}
