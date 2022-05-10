@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Home from "./Home";
+import Home from "./Home/Home";
 import Image from "./Image";
 import Form from "../Form/Form";
 import classes from "./Main.module.css";

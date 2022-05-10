@@ -7,6 +7,7 @@ const Image = () => {
       <img src={pic} alt="uñas" className={classes.img} />
     </div>
   );
+  // PEDIR UNA DESCRIPCIÓN DE LA IMG
 };
 
 export default Image;

@@ -9,3 +9,15 @@
   border: 1px solid black;
   padding: 10px 20px;
 }
+
+.free {
+  background-color: #c99e9aff;
+}
+
+.busy {
+  background-color: black;
+}
+
+.selected {
+  background-color: white;
+}

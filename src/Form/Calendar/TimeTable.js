@@ -1,13 +1,20 @@
+import { useState } from "react";
+
 import classes from "./TimeTable.module.css";
 
 const TimeTable = () => {
+  const [selectedTime, setSelectedTime] = useState("");
+
   const boxClickHandler = (event) => {
-    if (event.target.className === "free") {
+    if (selectedTime.id) {
+      if (event.target.id !== selectedTime.id) {
+        selectedTime.style.backgroundColor = "#c99e9aff";
+        setSelectedTime(event.target);
+        event.target.style.backgroundColor = "white";
+      }
+    } else if (!selectedTime.id) {
+      setSelectedTime(event.target);
       event.target.style.backgroundColor = "white";
-      event.target.className = "busy";
-    } else if (event.target.className === "busy") {
-      event.target.style.backgroundColor = "#c99e9aff";
-      event.target.className = "free";
     }
   };
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { db } from "../../firebase-config";
-import { collection, getDocs } from "firebase/firestore";
+// import { db } from "../../firebase-config";
+// import { collection, getDocs } from "firebase/firestore";
 import classes from "./Calendar.module.css";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
@@ -8,7 +8,6 @@ import TimeTable from "./TimeTable";
 
 const Calendar = (props) => {
   // const [dates, setDates] = useState([]);
-  const [weekDays, setWeekDays] = useState([]);
   // const datesCollectionRef = collection(db, "turnos");
   // useEffect(() => {
   //   const getDates = async () => {
@@ -17,7 +16,8 @@ const Calendar = (props) => {
   //   };
   //   getDates();
   // }, [datesCollectionRef]);
-
+  const [weekDays, setWeekDays] = useState([]);
+  const [showTimeTable, setShowTimeTable] = useState(false);
   const weekSelectorHandler = (event) => {
     let weekDates = parseDates(event.target.value);
     setWeekDays(weekDates);
@@ -46,13 +46,25 @@ const Calendar = (props) => {
           options
         )
       );
+    console.log(days[0].slice(-5));
     return days;
+  };
+  const selectDayHandler = () => {
+    if (!showTimeTable) {
+      setShowTimeTable(true);
+    } else {
+      setShowTimeTable(false);
+    }
   };
 
   return (
     <div className={classes.calendar}>
-      <h2>{weekDays[2]}</h2>
-      <TimeTable />
+      {weekDays.map((day) => (
+        <h2 key={day} id={day} onClick={selectDayHandler}>
+          {day}
+        </h2>
+      ))}
+      {showTimeTable && <TimeTable />}
       <Input
         type="week"
         id="weekSelector"
