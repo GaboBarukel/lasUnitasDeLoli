@@ -26,7 +26,7 @@ const Calendar = (props) => {
 
   const weekTimeTableDummy = [
     {
-      id: "lunes, 16/05",
+      id: "one",
       eight: "busy",
       nine: "",
       ten: "",
@@ -41,7 +41,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "martes, 17/05",
+      id: "two",
       eight: "",
       nine: "busy",
       ten: "",
@@ -56,7 +56,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "miércoles, 18/05",
+      id: "three",
       eight: "",
       nine: "",
       ten: "busy",
@@ -71,7 +71,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "jueves, 19/05",
+      id: "four",
       eight: "",
       nine: "",
       ten: "",
@@ -86,7 +86,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "viernes, 20/05",
+      id: "five",
       eight: "",
       nine: "",
       ten: "",
@@ -101,7 +101,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "sábado, 21/05",
+      id: "six",
       eight: "",
       nine: "",
       ten: "",
@@ -116,7 +116,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "domingo, 22/05",
+      id: "seven",
       eight: "",
       nine: "",
       ten: "",
@@ -131,6 +131,12 @@ const Calendar = (props) => {
       nineteen: "",
     },
   ];
+
+  for (let i = 0; i < weekTimeTableDummy.length; i++) {
+    weekTimeTableDummy[i].id = weekDays[i];
+  }
+
+  // console.log(weekTimeTableDummy);
 
   const parseDates = (inp) => {
     let year = parseInt(inp.slice(0, 4), 10);
@@ -155,7 +161,6 @@ const Calendar = (props) => {
           options
         )
       );
-    console.log(days[0].slice(-5));
     return days;
   };
 
