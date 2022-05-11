@@ -27,7 +27,7 @@ const TimeTable = (props) => {
       setShowTimeTable(false);
     }
   };
-  console.log(selectedTime);
+  // console.log(selectedTime);
   return (
     <table className={classes.timeTable} id="calendar">
       <thead>
