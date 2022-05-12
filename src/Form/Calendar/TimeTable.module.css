@@ -2,12 +2,19 @@
   font-size: 2rem;
   border-radius: 10px;
   border: 1px solid black;
-  margin: 0 auto;
+  margin: 15px auto;
 }
 
 .timeTable td {
   border: 1px solid black;
+  border-radius: 10px;
   padding: 10px 20px;
+}
+
+.thead th {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .free {

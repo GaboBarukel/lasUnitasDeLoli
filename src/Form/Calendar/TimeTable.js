@@ -15,6 +15,9 @@ const TimeTable = (props) => {
             day: props.onTimeTableData.id,
             time: event.target.id,
           });
+        } else if (event.target.id === selectedTime.id) {
+          setSelectedTime("");
+          props.onGetData({});
         }
       } else if (!selectedTime.id) {
         setSelectedTime(event.target);
@@ -36,10 +39,9 @@ const TimeTable = (props) => {
     }
   };
 
-  // console.log(selectedTime);
   return (
     <table className={classes.timeTable} id="calendar">
-      <thead>
+      <thead className={classes.thead}>
         <tr>
           <th colSpan="6" onClick={showTimeTableHandler}>
             {props.onTimeTableData.id}

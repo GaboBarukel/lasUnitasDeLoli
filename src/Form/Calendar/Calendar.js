@@ -19,6 +19,7 @@ const Calendar = (props) => {
   // const [showTimeTable, setShowTimeTable] = useState(false);
   // const [dayTimeTable, setDayTimeTable] = useState({});
   const [weekDays, setWeekDays] = useState([]);
+
   const weekSelectorHandler = (event) => {
     let weekDates = parseDates(event.target.value);
     setWeekDays(weekDates);
@@ -135,8 +136,6 @@ const Calendar = (props) => {
   for (let i = 0; i < weekTimeTableDummy.length; i++) {
     weekTimeTableDummy[i].id = weekDays[i];
   }
-
-  // console.log(weekTimeTableDummy);
 
   const parseDates = (inp) => {
     let year = parseInt(inp.slice(0, 4), 10);
