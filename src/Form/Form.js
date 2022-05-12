@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../firebase-config";
+// import { addDoc, collection } from "firebase/firestore";
+// import { db } from "../firebase-config";
 
 import TreatmentForm from "./TreatmentForm";
 import UserDataForm from "./UserDataForm";
@@ -11,7 +11,8 @@ const Form = (props) => {
   const [changeForm, setChangeForm] = useState("TREAT");
   const [treatmentSelect, setTreatmentSelect] = useState("KAPPING");
   const [inputData, setInputData] = useState({});
-  const datesCollectionRef = collection(db, "turnos");
+  const [dateData, setDateData] = useState({});
+  // const datesCollectionRef = collection(db, "turnos");
 
   const getTreatmentHandler = (treatment) => {
     setTreatmentSelect(treatment);
@@ -21,17 +22,22 @@ const Form = (props) => {
     setInputData({ name: uName, tel: uTel });
   };
 
-  const createNewDate = async (newDate) => {
-    await addDoc(datesCollectionRef, { ...newDate });
+  const getDateDataHandler = (date) => {
+    setDateData({ day: date.day, time: date.time });
   };
+
+  // const createNewDate = async (newDate) => {
+  //   await addDoc(datesCollectionRef, { ...newDate });
+  // };
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     const userData = {
+      ...dateData,
       ...inputData,
       treatment: treatmentSelect,
     };
-    createNewDate(userData);
+    console.log(userData);
   };
 
   const onChangeFormForwardHandler = () => {
@@ -68,7 +74,10 @@ const Form = (props) => {
           />
         )}
         {changeForm === "CALEN" && (
-          <Calendar onBack={onChangeFormBackHandler} />
+          <Calendar
+            onBack={onChangeFormBackHandler}
+            onDateData={getDateDataHandler}
+          />
         )}
       </form>
     </div>

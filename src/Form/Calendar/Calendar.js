@@ -164,10 +164,18 @@ const Calendar = (props) => {
     return days;
   };
 
+  const onGetDataHandler = (date) => {
+    props.onDateData(date);
+  };
+
   return (
     <div className={classes.calendar}>
       {weekTimeTableDummy.map((dayTimeTable) => (
-        <TimeTable onTimeTableData={dayTimeTable} key={dayTimeTable.id} />
+        <TimeTable
+          onTimeTableData={dayTimeTable}
+          key={dayTimeTable.id}
+          onGetData={onGetDataHandler}
+        />
       ))}
       <Input
         type="week"
