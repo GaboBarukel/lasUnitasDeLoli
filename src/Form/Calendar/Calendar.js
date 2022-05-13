@@ -1,9 +1,9 @@
 import { useState } from "react";
 // import { db } from "../../firebase-config";
 // import { collection, getDocs } from "firebase/firestore";
+import Input from "../../UI/Input";
 import classes from "./Calendar.module.css";
 import Button from "../../UI/Button";
-import Input from "../../UI/Input";
 import TimeTable from "./TimeTable";
 
 const Calendar = (props) => {

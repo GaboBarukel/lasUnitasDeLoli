@@ -1,6 +1,6 @@
 import { useState } from "react";
-// import { addDoc, collection } from "firebase/firestore";
-// import { db } from "../firebase-config";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebase-config";
 
 import TreatmentForm from "./TreatmentForm";
 import UserDataForm from "./UserDataForm";
@@ -12,7 +12,7 @@ const Form = (props) => {
   const [treatmentSelect, setTreatmentSelect] = useState("KAPPING");
   const [inputData, setInputData] = useState({});
   const [dateData, setDateData] = useState({});
-  // const datesCollectionRef = collection(db, "turnos");
+  const datesCollectionRef = collection(db, "turnos");
 
   const getTreatmentHandler = (treatment) => {
     setTreatmentSelect(treatment);
@@ -26,9 +26,9 @@ const Form = (props) => {
     setDateData({ day: date.day, time: date.time });
   };
 
-  // const createNewDate = async (newDate) => {
-  //   await addDoc(datesCollectionRef, { ...newDate });
-  // };
+  const createNewDate = async (newDate) => {
+    await addDoc(datesCollectionRef, { ...newDate });
+  };
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
@@ -37,7 +37,7 @@ const Form = (props) => {
       ...inputData,
       treatment: treatmentSelect,
     };
-    console.log(userData);
+    createNewDate(userData);
   };
 
   const onChangeFormForwardHandler = () => {
