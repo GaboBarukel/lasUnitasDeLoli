@@ -38,6 +38,7 @@ const Form = (props) => {
       treatment: treatmentSelect,
     };
     createNewDate(userData);
+    console.log(userData);
   };
 
   const onChangeFormForwardHandler = () => {
