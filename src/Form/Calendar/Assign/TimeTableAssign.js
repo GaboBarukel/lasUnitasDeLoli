@@ -8,10 +8,22 @@ const TimeTableAssign = (props) => {
   const dayId = props.onTimeTableData.id;
 
   const boxClickHandler = (event) => {
-    if (event.target.id === selectedTime.id) {
+    if (
+      event.target.id === selectedTime.id ||
+      event.target.className === "TimeTableAssign_busy__mZWYo"
+    ) {
       setSelectedTime("");
-    } else {
+      event.target.className = "TimeTableAssign_free__FHs7l";
+      props.onUpdateData({
+        id: dayId,
+        time: event.target.id,
+      });
+    } else if (
+      event.target.id !== selectedTime.id ||
+      event.target.className === "TimeTableAssign_free__FHs7l"
+    ) {
       setSelectedTime(event.target);
+      event.target.className = "TimeTableAssign_busy__mZWYo";
       props.onGetData({
         id: dayId,
         time: event.target.id,
@@ -31,7 +43,9 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.eight === "busy" ? classes.busy : ""
+              props.onTimeTableData.eight === "busy"
+                ? classes.busy
+                : classes.free
             }
             id="eight"
           >
