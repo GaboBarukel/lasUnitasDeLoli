@@ -11,16 +11,18 @@ const Main = () => {
   const onChangeDisplayHandler = () => {
     if (display) {
       setDisplay(false);
-    } else {
+    } else if (!display) {
       setDisplay(true);
     }
   };
 
   return (
-    <div className={classes.main}>
-      {display && <Home onClick={onChangeDisplayHandler} />}
-      {!display && <Form onClick={onChangeDisplayHandler} />}
-      <Image />
+    <div className={classes.app}>
+      <div className={classes.main}>
+        {display && <Home onClick={onChangeDisplayHandler} />}
+        {!display && <Form onClick={onChangeDisplayHandler} />}
+        <Image />
+      </div>
     </div>
   );
 };
