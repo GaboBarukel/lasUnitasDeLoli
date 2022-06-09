@@ -1,35 +1,28 @@
-import { useState } from "react";
-// import { db } from "../../firebase-config";
-// import { collection, getDocs } from "firebase/firestore";
-import Input from "../../UI/Input";
+import { useState, useEffect } from "react";
+import { db } from "../../firebase-config";
+import { collection, getDocs } from "firebase/firestore";
 import classes from "./Calendar.module.css";
 import Button from "../../UI/Button";
 import TimeTable from "./TimeTable";
 
 const Calendar = (props) => {
-  // const [dates, setDates] = useState([]);
-  // const datesCollectionRef = collection(db, "turnos");
-  // useEffect(() => {
-  //   const getDates = async () => {
-  //     const data = await getDocs(datesCollectionRef);
-  //     setDates(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //   };
-  //   getDates();
-  // }, [datesCollectionRef]);
-  // const [showTimeTable, setShowTimeTable] = useState(false);
-  // const [dayTimeTable, setDayTimeTable] = useState({});
-  const [weekDays, setWeekDays] = useState([]);
-
-  const weekSelectorHandler = (event) => {
-    let weekDates = parseDates(event.target.value);
-    setWeekDays(weekDates);
-  };
-
+  const [dates, setDates] = useState([]);
+  const [renderWeek, setRenderWeek] = useState([]);
+  const datesCollectionRef = collection(db, "week");
+  useEffect(() => {
+    console.log("tuvieja");
+    const getDates = async () => {
+      const data = await getDocs(datesCollectionRef);
+      setDates(data.docs.map((doc) => ({ ...doc.data() })));
+    };
+    getDates();
+    // console.log(dates);
+  }, []);
   const weekTimeTableDummy = [
     {
-      id: "one",
-      eight: "busy",
-      nine: "busy",
+      id: "lunes",
+      eight: "",
+      nine: "",
       ten: "",
       eleven: "",
       twelve: "",
@@ -42,7 +35,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "two",
+      id: "martes",
       eight: "",
       nine: "busy",
       ten: "busy",
@@ -57,7 +50,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "three",
+      id: "miércoles",
       eight: "",
       nine: "",
       ten: "busy",
@@ -72,7 +65,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "four",
+      id: "jueves",
       eight: "",
       nine: "",
       ten: "",
@@ -87,7 +80,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "five",
+      id: "viernes",
       eight: "",
       nine: "",
       ten: "",
@@ -102,7 +95,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "six",
+      id: "sábado",
       eight: "",
       nine: "",
       ten: "",
@@ -117,7 +110,7 @@ const Calendar = (props) => {
       nineteen: "",
     },
     {
-      id: "seven",
+      id: "domingo",
       eight: "",
       nine: "",
       ten: "",
@@ -132,56 +125,48 @@ const Calendar = (props) => {
       nineteen: "",
     },
   ];
+  // RESOLVEEEEEEEEEER
 
-  for (let i = 0; i < weekTimeTableDummy.length; i++) {
-    weekTimeTableDummy[i].id = weekDays[i];
+  const Week = dates[0];
+  if (Week && renderWeek.length === 0) {
+    const updatedWeek = Object.keys(Week).map(function (key) {
+      return Week[key];
+    });
+    setRenderWeek(updatedWeek);
+    // for (let i = 0; i < updatedWeek.length; i++) {
+    //   const day = {
+    //     id: updatedWeek[i].id,
+    //     eight: updatedWeek[i].eight,
+    //     nine: updatedWeek[i].nine,
+    //     ten: updatedWeek[i].ten,
+    //     eleven: updatedWeek[i].eleven,
+    //     twelve: updatedWeek[i].twelve,
+    //     thirteen: updatedWeek[i].thirteen,
+    //     fourteen: updatedWeek[i].fourteen,
+    //     fifteen: updatedWeek[i].fifteen,
+    //     sixteen: updatedWeek[i].sixteen,
+    //     seventeen: updatedWeek[i].seventeen,
+    //   };
+    //   console.log(day);
+    // }
   }
-
-  const parseDates = (inp) => {
-    let year = parseInt(inp.slice(0, 4), 10);
-    let week = parseInt(inp.slice(6), 10);
-    let day = 1 + week * 7;
-
-    let dayOffset = new Date(year, 0, 1).getDay();
-
-    dayOffset--;
-
-    const options = {
-      weekday: "long",
-      month: "2-digit",
-      day: "2-digit",
-    };
-
-    let days = [];
-    for (let i = 0; i < 7; i++)
-      days.push(
-        new Date(year, 0, day - dayOffset + i).toLocaleDateString(
-          undefined,
-          options
-        )
-      );
-    return days;
-  };
-
-  const onGetDataHandler = (date) => {
+  const GetDataHandler = (date) => {
     props.onDateData(date);
   };
 
   return (
     <div className={classes.calendar}>
-      {weekTimeTableDummy.map((dayTimeTable) => (
-        <TimeTable
-          onTimeTableData={dayTimeTable}
-          key={dayTimeTable.id}
-          onGetData={onGetDataHandler}
-        />
-      ))}
-      <Input
-        type="week"
-        id="weekSelector"
-        name="weekSelector"
-        onChange={weekSelectorHandler}
-      />
+      {!Week ? (
+        <h1>CARGANDO...</h1>
+      ) : (
+        renderWeek.map((dayTimeTable) => (
+          <TimeTable
+            onTimeTableData={dayTimeTable}
+            key={dayTimeTable.id}
+            onGetData={GetDataHandler}
+          />
+        ))
+      )}
       <Button type="submit">Enviar Info</Button>
       <Button type="button" onClick={props.onBack}>
         VOLVER

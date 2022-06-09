@@ -28,7 +28,7 @@ const TimeTable = (props) => {
       }
     }
   };
-
+  //revisar la lógica de selección de horario(condicional)
   const showTimeTableHandler = () => {
     if (!showTimeTable) {
       setSelectedTime("");

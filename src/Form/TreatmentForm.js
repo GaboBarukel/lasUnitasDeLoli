@@ -11,11 +11,11 @@ const TreatmentForm = (props) => {
     <div className={classes.treatments}>
       <h2>TRATAMIENTOS:</h2>
       <Input
-        id="RUSA"
+        id="KAPPING"
         type="radio"
         name="AB"
-        label="MANICURÍA RUSA"
-        value="RUSA"
+        label="KAPPING"
+        value="KAPPING"
         onChange={selectTreatmentHandler}
       />
       <Input

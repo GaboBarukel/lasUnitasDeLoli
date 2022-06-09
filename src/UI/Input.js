@@ -1,19 +1,18 @@
-import { Fragment } from "react";
-
-// import classes from "./Input.module.css";
-
 const Input = (props) => {
   return (
-    <Fragment>
-      <label htmlFor={props.id}>{props.label}</label>
+    <>
+      <label htmlFor={props.id} className={props.labelClassName}>
+        {props.label}
+      </label>
       <input
+        className={props.inputClassName}
         type={props.type}
         id={props.id}
         name={props.name}
         value={props.value}
         onChange={props.onChange}
       />
-    </Fragment>
+    </>
   );
 };
 
