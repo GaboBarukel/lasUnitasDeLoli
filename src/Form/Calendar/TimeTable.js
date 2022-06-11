@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import classes from "./TimeTable.module.css";
 
 const TimeTable = (props) => {
@@ -55,9 +54,9 @@ const TimeTable = (props) => {
               onClick={boxClickHandler}
               className={
                 (props.onTimeTableData.eight === "busy" ? classes.busy : "") ||
-                (selectedTime.id === "8" ? classes.selected : "")
+                (selectedTime.id === "eight" ? classes.selected : "")
               }
-              id="8"
+              id="eight"
             >
               08:00
             </td>
@@ -65,9 +64,9 @@ const TimeTable = (props) => {
               onClick={boxClickHandler}
               className={
                 (props.onTimeTableData.nine === "busy" ? classes.busy : "") ||
-                (selectedTime.id === "9" ? classes.selected : "")
+                (selectedTime.id === "nine" ? classes.selected : "")
               }
-              id="9"
+              id="nine"
             >
               09:00
             </td>
@@ -75,9 +74,9 @@ const TimeTable = (props) => {
               onClick={boxClickHandler}
               className={
                 (props.onTimeTableData.ten === "busy" ? classes.busy : "") ||
-                (selectedTime.id === "10" ? classes.selected : "")
+                (selectedTime.id === "ten" ? classes.selected : "")
               }
-              id="10"
+              id="ten"
             >
               10:00
             </td>
@@ -85,9 +84,9 @@ const TimeTable = (props) => {
               onClick={boxClickHandler}
               className={
                 (props.onTimeTableData.eleven === "busy" ? classes.busy : "") ||
-                (selectedTime.id === "11" ? classes.selected : "")
+                (selectedTime.id === "eleven" ? classes.selected : "")
               }
-              id="11"
+              id="eleven"
             >
               11:00
             </td>
@@ -95,9 +94,9 @@ const TimeTable = (props) => {
               onClick={boxClickHandler}
               className={
                 (props.onTimeTableData.twelve === "busy" ? classes.busy : "") ||
-                (selectedTime.id === "12" ? classes.selected : "")
+                (selectedTime.id === "twelve" ? classes.selected : "")
               }
-              id="12"
+              id="twelve"
             >
               12:00
             </td>
@@ -106,9 +105,10 @@ const TimeTable = (props) => {
               className={
                 (props.onTimeTableData.thirteen === "busy"
                   ? classes.busy
-                  : "") || (selectedTime.id === "13" ? classes.selected : "")
+                  : "") ||
+                (selectedTime.id === "thirteen" ? classes.selected : "")
               }
-              id="13"
+              id="thirteen"
             >
               13:00
             </td>
@@ -119,9 +119,10 @@ const TimeTable = (props) => {
               className={
                 (props.onTimeTableData.fourteen === "busy"
                   ? classes.busy
-                  : "") || (selectedTime.id === "14" ? classes.selected : "")
+                  : "") ||
+                (selectedTime.id === "fourteen" ? classes.selected : "")
               }
-              id="14"
+              id="fourteen"
             >
               14:00
             </td>
@@ -130,9 +131,10 @@ const TimeTable = (props) => {
               className={
                 (props.onTimeTableData.fifteen === "busy"
                   ? classes.busy
-                  : "") || (selectedTime.id === "15" ? classes.selected : "")
+                  : "") ||
+                (selectedTime.id === "fifteen" ? classes.selected : "")
               }
-              id="15"
+              id="fifteen"
             >
               15:00
             </td>
@@ -141,9 +143,10 @@ const TimeTable = (props) => {
               className={
                 (props.onTimeTableData.sixteen === "busy"
                   ? classes.busy
-                  : "") || (selectedTime.id === "16" ? classes.selected : "")
+                  : "") ||
+                (selectedTime.id === "sixteen" ? classes.selected : "")
               }
-              id="16"
+              id="sixteen"
             >
               16:00
             </td>
@@ -152,9 +155,10 @@ const TimeTable = (props) => {
               className={
                 (props.onTimeTableData.seventeen === "busy"
                   ? classes.busy
-                  : "") || (selectedTime.id === "17" ? classes.selected : "")
+                  : "") ||
+                (selectedTime.id === "seventeen" ? classes.selected : "")
               }
-              id="17"
+              id="seventeen"
             >
               17:00
             </td>
@@ -163,9 +167,10 @@ const TimeTable = (props) => {
               className={
                 (props.onTimeTableData.eighteen === "busy"
                   ? classes.busy
-                  : "") || (selectedTime.id === "18" ? classes.selected : "")
+                  : "") ||
+                (selectedTime.id === "eighteen" ? classes.selected : "")
               }
-              id="18"
+              id="eighteen"
             >
               18:00
             </td>
@@ -174,9 +179,10 @@ const TimeTable = (props) => {
               className={
                 (props.onTimeTableData.nineteen === "busy"
                   ? classes.busy
-                  : "") || (selectedTime.id === "19" ? classes.selected : "")
+                  : "") ||
+                (selectedTime.id === "nineteen" ? classes.selected : "")
               }
-              id="19"
+              id="nineteen"
             >
               19:00
             </td>

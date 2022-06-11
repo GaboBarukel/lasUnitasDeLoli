@@ -7,7 +7,9 @@ const AssignSelector = (props) => {
       <Button onClick={props.onCalendar}>
         ASIGNAR TURNOS DISPONIBLES DE ESTA SEMANA
       </Button>
-      <Button>VER LOS TURNOS PEDIDOS DE ESTA SEMANA</Button>
+      <Button onClick={props.onDates}>
+        VER LOS TURNOS PEDIDOS DE ESTA SEMANA
+      </Button>
     </>
   );
 };

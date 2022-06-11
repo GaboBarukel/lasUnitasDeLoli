@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { db } from "../../firebase-config";
+import { db } from "../../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
-import classes from "./Calendar.module.css";
-import Button from "../../UI/Button";
-import TimeTable from "./TimeTable";
+import classes from "../Calendar.module.css";
+import Button from "../../../UI/Button";
+import DatesTimeTable from "./DatesTimeTable";
 
-const Calendar = (props) => {
+const DatesCalendar = (props) => {
   const [dates, setDates] = useState([]);
   const [renderWeek, setRenderWeek] = useState([]);
   const datesCollectionRef = collection(db, "week");
@@ -24,9 +24,6 @@ const Calendar = (props) => {
     });
     setRenderWeek(updatedWeek);
   }
-  const GetDataHandler = (date) => {
-    props.onDateData(date);
-  };
 
   return (
     <div className={classes.calendar}>
@@ -34,19 +31,17 @@ const Calendar = (props) => {
         <h1>CARGANDO...</h1>
       ) : (
         renderWeek.map((dayTimeTable) => (
-          <TimeTable
+          <DatesTimeTable
             onTimeTableData={dayTimeTable}
             key={dayTimeTable.id}
-            onGetData={GetDataHandler}
           />
         ))
       )}
-      <Button type="submit">Enviar Info</Button>
-      <Button type="button" onClick={props.onBack}>
-        VOLVER
+      <Button type="button" onClick={props.onSelector}>
+        VOLVER AL MENU
       </Button>
     </div>
   );
 };
 
-export default Calendar;
+export default DatesCalendar;

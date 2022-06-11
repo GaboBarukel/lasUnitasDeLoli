@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, setDoc, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 
 import classes from "./CalendarAssign.module.css";
@@ -17,10 +17,13 @@ const CalendarAssign = (props) => {
     "sábado",
     "domingo",
   ]);
+  const [newWeekAvailable, setNewWeekAvailable] = useState(false);
+  const [showWeek, setShowWeek] = useState(false);
 
   const weekSelectorHandler = (event) => {
     let weekDates = parseDates(event.target.value);
     setWeekDays(weekDates);
+    setShowWeek(true);
   };
 
   const parseDates = (inp) => {
@@ -188,42 +191,41 @@ const CalendarAssign = (props) => {
   const weekCollectionRef = collection(db, "week");
 
   const updateWeekHandler = async () => {
-    // for (let i = 0; i < weekTimeTableDummy.length; i++) {
-    //   const day = {
-    //     id: weekTimeTableDummy[i].id,
-    //     eight: [weekTimeTableDummy[i].eight, 0, ""],
-    //     nine: [weekTimeTableDummy[i].nine, 0, ""],
-    //     ten: [weekTimeTableDummy[i].ten, 0, ""],
-    //     eleven: [weekTimeTableDummy[i].eleven, 0, ""],
-    //     twelve: [weekTimeTableDummy[i].twelve, 0, ""],
-    //     thirteen: [weekTimeTableDummy[i].thirteen, 0, ""],
-    //     fourteen: [weekTimeTableDummy[i].fourteen, 0, ""],
-    //     fifteen: [weekTimeTableDummy[i].fifteen, 0, ""],
-    //     sixteen: [weekTimeTableDummy[i].sixteen, 0, ""],
-    //     seventeen: [weekTimeTableDummy[i].seventeen, 0, ""],
-    //   };
-    // }
-    await addDoc(weekCollectionRef, { ...weekTimeTableDummy });
+    await setDoc(doc(db, "week", "NEW"), { ...weekTimeTableDummy });
+  };
+
+  const onDeletePreviousHandler = async () => {
+    const previousWeekDoc = doc(db, "week", "NEW");
+    await deleteDoc(previousWeekDoc);
+    setNewWeekAvailable(true);
   };
 
   return (
     <div className={classes.calendar}>
       <h1>ASIGNAR TURNOS DISPONIBLES</h1>
-      <Input
-        type="week"
-        id="weekSelector"
-        name="weekSelector"
-        label="Seleccione una semana: "
-        onChange={weekSelectorHandler}
-      />
-      {weekTimeTableDummy.map((dayTimeTable) => (
-        <TimeTableAssign
-          onTimeTableData={dayTimeTable}
-          key={dayTimeTable.id}
-          onGetData={onGetDataAssignHandler}
-          onUpdateData={onUpdateDataHandler}
+      {!newWeekAvailable && (
+        <Button onClick={onDeletePreviousHandler}>
+          ELIMINAR SEMANA PREVIA
+        </Button>
+      )}
+      {newWeekAvailable && (
+        <Input
+          type="week"
+          id="weekSelector"
+          name="weekSelector"
+          label="Seleccione una semana: "
+          onChange={weekSelectorHandler}
         />
-      ))}
+      )}
+      {showWeek &&
+        weekTimeTableDummy.map((dayTimeTable) => (
+          <TimeTableAssign
+            onTimeTableData={dayTimeTable}
+            key={dayTimeTable.id}
+            onGetData={onGetDataAssignHandler}
+            onUpdateData={onUpdateDataHandler}
+          />
+        ))}
       <Button type="button" onClick={props.onSelector}>
         VOLVER AL MENU
       </Button>
