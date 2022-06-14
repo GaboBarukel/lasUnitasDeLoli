@@ -63,8 +63,9 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.eight === "busy" ? classes.busy : "") ||
-                (selectedTime.id === "eight" ? classes.selected : "")
+                (props.onTimeTableData.eight.disp === "busy"
+                  ? classes.busy
+                  : "") || (selectedTime.id === "eight" ? classes.selected : "")
               }
               id="eight"
             >
@@ -73,8 +74,9 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.nine === "busy" ? classes.busy : "") ||
-                (selectedTime.id === "nine" ? classes.selected : "")
+                (props.onTimeTableData.nine.disp === "busy"
+                  ? classes.busy
+                  : "") || (selectedTime.id === "nine" ? classes.selected : "")
               }
               id="nine"
             >
@@ -83,8 +85,9 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.ten === "busy" ? classes.busy : "") ||
-                (selectedTime.id === "ten" ? classes.selected : "")
+                (props.onTimeTableData.ten.disp === "busy"
+                  ? classes.busy
+                  : "") || (selectedTime.id === "ten" ? classes.selected : "")
               }
               id="ten"
             >
@@ -93,7 +96,9 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.eleven === "busy" ? classes.busy : "") ||
+                (props.onTimeTableData.eleven.disp === "busy"
+                  ? classes.busy
+                  : "") ||
                 (selectedTime.id === "eleven" ? classes.selected : "")
               }
               id="eleven"
@@ -103,7 +108,9 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.twelve === "busy" ? classes.busy : "") ||
+                (props.onTimeTableData.twelve.disp === "busy"
+                  ? classes.busy
+                  : "") ||
                 (selectedTime.id === "twelve" ? classes.selected : "")
               }
               id="twelve"
@@ -113,7 +120,7 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.thirteen === "busy"
+                (props.onTimeTableData.thirteen.disp === "busy"
                   ? classes.busy
                   : "") ||
                 (selectedTime.id === "thirteen" ? classes.selected : "")
@@ -127,7 +134,7 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.fourteen === "busy"
+                (props.onTimeTableData.fourteen.disp === "busy"
                   ? classes.busy
                   : "") ||
                 (selectedTime.id === "fourteen" ? classes.selected : "")
@@ -139,7 +146,7 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.fifteen === "busy"
+                (props.onTimeTableData.fifteen.disp === "busy"
                   ? classes.busy
                   : "") ||
                 (selectedTime.id === "fifteen" ? classes.selected : "")
@@ -151,7 +158,7 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.sixteen === "busy"
+                (props.onTimeTableData.sixteen.disp === "busy"
                   ? classes.busy
                   : "") ||
                 (selectedTime.id === "sixteen" ? classes.selected : "")
@@ -163,7 +170,7 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.seventeen === "busy"
+                (props.onTimeTableData.seventeen.disp === "busy"
                   ? classes.busy
                   : "") ||
                 (selectedTime.id === "seventeen" ? classes.selected : "")
@@ -175,7 +182,7 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.eighteen === "busy"
+                (props.onTimeTableData.eighteen.disp === "busy"
                   ? classes.busy
                   : "") ||
                 (selectedTime.id === "eighteen" ? classes.selected : "")
@@ -187,7 +194,7 @@ const TimeTable = (props) => {
             <td
               onClick={boxClickHandler}
               className={
-                (props.onTimeTableData.nineteen === "busy"
+                (props.onTimeTableData.nineteen.disp === "busy"
                   ? classes.busy
                   : "") ||
                 (selectedTime.id === "nineteen" ? classes.selected : "")

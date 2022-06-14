@@ -26,7 +26,7 @@ const DatesTimeTable = (props) => {
           <tr>
             <td
               className={
-                props.onTimeTableData.eight === "busy"
+                props.onTimeTableData.eight.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -36,7 +36,7 @@ const DatesTimeTable = (props) => {
             </td>
             <td
               className={
-                props.onTimeTableData.nine === "busy"
+                props.onTimeTableData.nine.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -46,7 +46,7 @@ const DatesTimeTable = (props) => {
             </td>
             <td
               className={
-                props.onTimeTableData.ten === "busy"
+                props.onTimeTableData.ten.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -56,7 +56,7 @@ const DatesTimeTable = (props) => {
             </td>
             <td
               className={
-                props.onTimeTableData.eleven === "busy"
+                props.onTimeTableData.eleven.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -66,7 +66,7 @@ const DatesTimeTable = (props) => {
             </td>
             <td
               className={
-                props.onTimeTableData.twelve === "busy"
+                props.onTimeTableData.twelve.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -76,7 +76,7 @@ const DatesTimeTable = (props) => {
             </td>
             <td
               className={
-                props.onTimeTableData.thirteen === "busy"
+                props.onTimeTableData.thirteen.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -88,7 +88,7 @@ const DatesTimeTable = (props) => {
           <tr>
             <td
               className={
-                props.onTimeTableData.fourteen === "busy"
+                props.onTimeTableData.fourteen.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -98,7 +98,7 @@ const DatesTimeTable = (props) => {
             </td>
             <td
               className={
-                props.onTimeTableData.fifteen === "busy"
+                props.onTimeTableData.fifteen.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -108,7 +108,7 @@ const DatesTimeTable = (props) => {
             </td>
             <td
               className={
-                props.onTimeTableData.sixteen === "busy"
+                props.onTimeTableData.sixteen.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -118,7 +118,7 @@ const DatesTimeTable = (props) => {
             </td>
             <td
               className={
-                props.onTimeTableData.seventeen === "busy"
+                props.onTimeTableData.seventeen.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -128,7 +128,7 @@ const DatesTimeTable = (props) => {
             </td>
             <td
               className={
-                props.onTimeTableData.eighteen === "busy"
+                props.onTimeTableData.eighteen.disp === "busy"
                   ? classes.busy
                   : classes.free
               }
@@ -138,7 +138,7 @@ const DatesTimeTable = (props) => {
             </td>
             <td
               className={
-                props.onTimeTableData.nineteen === "busy"
+                props.onTimeTableData.nineteen.disp === "busy"
                   ? classes.busy
                   : classes.free
               }

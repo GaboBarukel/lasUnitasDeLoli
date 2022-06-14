@@ -43,7 +43,7 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.eight === "busy"
+              props.onTimeTableData.eight.disp === "busy"
                 ? classes.busy
                 : classes.free
             }
@@ -54,7 +54,7 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.nine === "busy" ? classes.busy : ""
+              props.onTimeTableData.nine.disp === "busy" ? classes.busy : ""
             }
             id="nine"
           >
@@ -62,7 +62,9 @@ const TimeTableAssign = (props) => {
           </td>
           <td
             onClick={boxClickHandler}
-            className={props.onTimeTableData.ten === "busy" ? classes.busy : ""}
+            className={
+              props.onTimeTableData.ten.disp === "busy" ? classes.busy : ""
+            }
             id="ten"
           >
             10:00
@@ -70,7 +72,7 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.eleven === "busy" ? classes.busy : ""
+              props.onTimeTableData.eleven.disp === "busy" ? classes.busy : ""
             }
             id="eleven"
           >
@@ -79,7 +81,7 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.twelve === "busy" ? classes.busy : ""
+              props.onTimeTableData.twelve.disp === "busy" ? classes.busy : ""
             }
             id="twelve"
           >
@@ -88,7 +90,7 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.thirteen === "busy" ? classes.busy : ""
+              props.onTimeTableData.thirteen.disp === "busy" ? classes.busy : ""
             }
             id="thirteen"
           >
@@ -99,7 +101,7 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.fourteen === "busy" ? classes.busy : ""
+              props.onTimeTableData.fourteen.disp === "busy" ? classes.busy : ""
             }
             id="fourteen"
           >
@@ -108,7 +110,7 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.fifteen === "busy" ? classes.busy : ""
+              props.onTimeTableData.fifteen.disp === "busy" ? classes.busy : ""
             }
             id="fifteen"
           >
@@ -117,7 +119,7 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.sixteen === "busy" ? classes.busy : ""
+              props.onTimeTableData.sixteen.disp === "busy" ? classes.busy : ""
             }
             id="sixteen"
           >
@@ -126,7 +128,9 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.seventeen === "busy" ? classes.busy : ""
+              props.onTimeTableData.seventeen.disp === "busy"
+                ? classes.busy
+                : ""
             }
             id="seventeen"
           >
@@ -135,7 +139,7 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.eighteen === "busy" ? classes.busy : ""
+              props.onTimeTableData.eighteen.disp === "busy" ? classes.busy : ""
             }
             id="eighteen"
           >
@@ -144,7 +148,7 @@ const TimeTableAssign = (props) => {
           <td
             onClick={boxClickHandler}
             className={
-              props.onTimeTableData.nineteen === "busy" ? classes.busy : ""
+              props.onTimeTableData.nineteen.disp === "busy" ? classes.busy : ""
             }
             id="nineteen"
           >
