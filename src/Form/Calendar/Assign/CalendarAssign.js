@@ -11,6 +11,7 @@ const CalendarAssign = (props) => {
   const [weekDays, setWeekDays] = useState([]);
   const [newWeekAvailable, setNewWeekAvailable] = useState(false);
   const [showWeek, setShowWeek] = useState(false);
+  const [updatedCorrectly, setUpdatedCorrectly] = useState(false);
 
   const weekSelectorHandler = (event) => {
     let weekDates = parseDates(event.target.value);
@@ -184,6 +185,9 @@ const CalendarAssign = (props) => {
 
   const updateWeekHandler = async () => {
     await setDoc(doc(db, "week", "NEW"), { ...weekTimeTableDummy });
+    setUpdatedCorrectly(true);
+    setNewWeekAvailable(false);
+    setShowWeek(false);
   };
 
   const onDeletePreviousHandler = async () => {
@@ -194,7 +198,10 @@ const CalendarAssign = (props) => {
 
   return (
     <div className={classes.calendar}>
-      <h1>ASIGNAR TURNOS DISPONIBLES</h1>
+      {!updatedCorrectly && <h1>ASIGNAR TURNOS DISPONIBLES</h1>}
+      {updatedCorrectly && (
+        <h1>TURNOS DE LA SEMANA ASIGNADOS CORRECTAMENTE!</h1>
+      )}
       {!newWeekAvailable && (
         <Button onClick={onDeletePreviousHandler}>
           ELIMINAR SEMANA PREVIA
@@ -221,9 +228,11 @@ const CalendarAssign = (props) => {
       <Button type="button" onClick={props.onSelector}>
         VOLVER AL MENU
       </Button>
-      <Button onClick={updateWeekHandler}>
-        Actualizar Turnos disponibles de la Semana
-      </Button>
+      {showWeek && (
+        <Button onClick={updateWeekHandler}>
+          Actualizar Turnos disponibles de la Semana
+        </Button>
+      )}
     </div>
   );
 };
