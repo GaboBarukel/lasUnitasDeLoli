@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./TimeTable.module.css";
 
 const TimeTable = (props) => {
   const [showTimeTable, setShowTimeTable] = useState(false);
   const [selectedTime, setSelectedTime] = useState("");
+
+  useEffect(() => {
+    const update = () => {
+      if (props.newTime !== props.onTimeTableData.id) {
+        setSelectedTime("");
+      }
+    };
+    update();
+  }, [props.newTime]);
 
   const boxClickHandler = (event) => {
     if (event.target.className !== "TimeTable_busy__YeMcg") {
@@ -19,6 +28,7 @@ const TimeTable = (props) => {
           props.onGetData({});
         }
       } else if (!selectedTime.id) {
+        props.onRefreshTimeHandler(props.onTimeTableData.id);
         setSelectedTime(event.target);
         props.onGetData({
           day: props.onTimeTableData.id,
@@ -27,7 +37,7 @@ const TimeTable = (props) => {
       }
     }
   };
-  //revisar la lógica de selección de horario(condicional)
+
   const showTimeTableHandler = () => {
     if (!showTimeTable) {
       setSelectedTime("");
