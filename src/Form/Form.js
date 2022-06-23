@@ -1,6 +1,6 @@
 import { useState } from "react";
-// import { addDoc, collection } from "firebase/firestore";
-// import { db } from "../firebase-config";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase-config";
 
 import TreatmentForm from "./TreatmentForm";
 import UserDataForm from "./UserDataForm";
@@ -11,8 +11,10 @@ const Form = (props) => {
   const [changeForm, setChangeForm] = useState("TREAT");
   const [treatmentSelect, setTreatmentSelect] = useState("RUSA");
   const [inputData, setInputData] = useState({});
-  const [dateData, setDateData] = useState({});
-  // const datesCollectionRef = collection(db, "turnos");
+  const [dayIndex, setDayIndex] = useState("lune");
+  const [dateTime, setDateTime] = useState("");
+
+  const dayDocRef = doc(db, "week", dayIndex);
 
   const getTreatmentHandler = (treatment) => {
     setTreatmentSelect(treatment);
@@ -20,23 +22,30 @@ const Form = (props) => {
   const getUserDataHandler = (uName, uTel) => {
     setInputData({ name: uName, tel: uTel });
   };
-  const getDateDataHandler = (date) => {
-    setDateData({ day: date.day, time: date.time });
+  const getDateDataHandler = (time, ind) => {
+    setDayIndex(ind);
+    setDateTime(time);
   };
 
-  // const createNewDate = async (newDate) => {
-  //   await addDoc(datesCollectionRef, { ...newDate });
-  // };
+  const createNewDate = async (newDate) => {
+    await updateDoc(dayDocRef, {
+      [dateTime]: {
+        disp: "busy",
+        contact: newDate.tel,
+        name: newDate.name,
+        treat: newDate.treatment,
+      },
+    });
+  };
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     const userData = {
-      ...dateData,
       ...inputData,
       treatment: treatmentSelect,
     };
-    // createNewDate(userData);
-    console.log(userData);
+    createNewDate(userData);
+    // console.log(dayIndex);
   };
 
   const onChangeFormForwardHandler = () => {

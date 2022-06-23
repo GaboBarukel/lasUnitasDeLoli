@@ -1,5 +1,11 @@
-import { useState } from "react";
-import { collection, setDoc, deleteDoc, doc } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import {
+  collection,
+  getDocs,
+  setDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../../../firebase-config";
 
 import classes from "./CalendarAssign.module.css";
@@ -8,10 +14,27 @@ import Input from "../../../UI/Input";
 import TimeTableAssign from "./TimeTableAssign";
 
 const CalendarAssign = (props) => {
-  const [weekDays, setWeekDays] = useState([]);
+  const [weekDays, setWeekDays] = useState([
+    "lunes",
+    "martes",
+    "miércoles",
+    "jueves",
+    "viernes",
+    "sábado",
+    "domingo",
+  ]);
   const [newWeekAvailable, setNewWeekAvailable] = useState(false);
   const [showWeek, setShowWeek] = useState(false);
   const [updatedCorrectly, setUpdatedCorrectly] = useState(false);
+  const [prevDays, setPrevDays] = useState([]);
+
+  useEffect(() => {
+    const getDays = async () => {
+      const data = await getDocs(weekCollectionRef);
+      setPrevDays(data.docs.map((doc) => ({ ...doc.data() })));
+    };
+    getDays();
+  }, []);
 
   const weekSelectorHandler = (event) => {
     let weekDates = parseDates(event.target.value);
@@ -47,7 +70,7 @@ const CalendarAssign = (props) => {
 
   const weekTimeTableDummy = [
     {
-      id: "one",
+      id: "lunes",
       eight: { disp: "busy", treat: "", name: "", contact: "" },
       nine: { disp: "busy", treat: "", name: "", contact: "" },
       ten: { disp: "busy", treat: "", name: "", contact: "" },
@@ -62,7 +85,7 @@ const CalendarAssign = (props) => {
       nineteen: { disp: "busy", treat: "", name: "", contact: "" },
     },
     {
-      id: "two",
+      id: "martes",
       eight: { disp: "busy", treat: "", name: "", contact: "" },
       nine: { disp: "busy", treat: "", name: "", contact: "" },
       ten: { disp: "busy", treat: "", name: "", contact: "" },
@@ -77,7 +100,7 @@ const CalendarAssign = (props) => {
       nineteen: { disp: "busy", treat: "", name: "", contact: "" },
     },
     {
-      id: "three",
+      id: "miércoles",
       eight: { disp: "busy", treat: "", name: "", contact: "" },
       nine: { disp: "busy", treat: "", name: "", contact: "" },
       ten: { disp: "busy", treat: "", name: "", contact: "" },
@@ -92,7 +115,7 @@ const CalendarAssign = (props) => {
       nineteen: { disp: "busy", treat: "", name: "", contact: "" },
     },
     {
-      id: "four",
+      id: "jueves",
       eight: { disp: "busy", treat: "", name: "", contact: "" },
       nine: { disp: "busy", treat: "", name: "", contact: "" },
       ten: { disp: "busy", treat: "", name: "", contact: "" },
@@ -107,7 +130,7 @@ const CalendarAssign = (props) => {
       nineteen: { disp: "busy", treat: "", name: "", contact: "" },
     },
     {
-      id: "five",
+      id: "viernes",
       eight: { disp: "busy", treat: "", name: "", contact: "" },
       nine: { disp: "busy", treat: "", name: "", contact: "" },
       ten: { disp: "busy", treat: "", name: "", contact: "" },
@@ -122,7 +145,7 @@ const CalendarAssign = (props) => {
       nineteen: { disp: "busy", treat: "", name: "", contact: "" },
     },
     {
-      id: "six",
+      id: "sábado",
       eight: { disp: "busy", treat: "", name: "", contact: "" },
       nine: { disp: "busy", treat: "", name: "", contact: "" },
       ten: { disp: "busy", treat: "", name: "", contact: "" },
@@ -137,7 +160,7 @@ const CalendarAssign = (props) => {
       nineteen: { disp: "busy", treat: "", name: "", contact: "" },
     },
     {
-      id: "seven",
+      id: "domingo",
       eight: { disp: "busy", treat: "", name: "", contact: "" },
       nine: { disp: "busy", treat: "", name: "", contact: "" },
       ten: { disp: "busy", treat: "", name: "", contact: "" },
@@ -183,16 +206,28 @@ const CalendarAssign = (props) => {
 
   const weekCollectionRef = collection(db, "week");
 
-  const updateWeekHandler = async () => {
-    await setDoc(doc(db, "week", "NEW"), { ...weekTimeTableDummy });
+  const dayDocCreate = async (day) => {
+    await setDoc(doc(db, "week", day.id.slice(0, -3)), { ...day });
+  };
+
+  const updateWeekHandler = () => {
+    for (let i = 0; i < weekTimeTableDummy.length; i++) {
+      dayDocCreate(weekTimeTableDummy[i]);
+    }
     setUpdatedCorrectly(true);
     setNewWeekAvailable(false);
     setShowWeek(false);
   };
 
-  const onDeletePreviousHandler = async () => {
-    const previousWeekDoc = doc(db, "week", "NEW");
-    await deleteDoc(previousWeekDoc);
+  const dayDocDelete = async (day) => {
+    const previousDayDoc = doc(db, "week", day);
+    await deleteDoc(previousDayDoc);
+  };
+
+  const onDeletePreviousHandler = () => {
+    for (let i = 0; i < prevDays.length; i++) {
+      dayDocDelete(prevDays[i].id.slice(0, -3));
+    }
     setNewWeekAvailable(true);
   };
 

@@ -7,6 +7,7 @@ import TimeTable from "./TimeTable";
 
 const Calendar = (props) => {
   const [dates, setDates] = useState([]);
+  const [weekShow, setWeekShow] = useState(false);
   const [renderWeek, setRenderWeek] = useState([]);
   const [refreshTime, setRefreshTime] = useState("");
 
@@ -23,29 +24,50 @@ const Calendar = (props) => {
   useEffect(() => {
     const getDates = async () => {
       const data = await getDocs(datesCollectionRef);
-      setDates(data.docs.map((doc) => ({ ...doc.data() })));
+      const toSort = data.docs.map((doc) => ({ ...doc.data() }));
+      toSort.sort(weekSorter);
+      setDates(toSort);
     };
     getDates();
+    setWeekShow(true);
   }, []);
 
-  const Week = dates[0];
+  const weekOrder = {
+    lunes: 1,
+    marte: 2,
+    miérc: 3,
+    jueve: 4,
+    viern: 5,
+    sábad: 6,
+    domin: 7,
+  };
 
-  if (Week && renderWeek.length === 0) {
-    const updatedWeek = Object.keys(Week).map(function (key) {
-      return Week[key];
-    });
-    setRenderWeek(updatedWeek);
-  }
+  const weekSorter = (a, b) => {
+    let day1 = a.id.slice(0, 5);
+    let day2 = b.id.slice(0, 5);
+    return weekOrder[day1] - weekOrder[day2];
+  };
+
+  // const Week = dates[0];
+
+  // if (Week && renderWeek.length === 0) {
+  //   const updatedWeek = Object.keys(Week).map(function (key) {
+  //     return Week[key];
+  //   });
+  //   setRenderWeek(updatedWeek);
+  // }
+
   const GetDataHandler = (date) => {
-    props.onDateData(date);
+    console.log(date.day.slice(0, -3));
+    props.onDateData(date.time, date.day.slice(0, -3));
   };
 
   return (
     <div className={classes.calendar}>
-      {!Week ? (
+      {!weekShow ? (
         <h1>CARGANDO...</h1>
       ) : (
-        renderWeek.map((dayTimeTable) => (
+        dates.map((dayTimeTable) => (
           <TimeTable
             onTimeTableData={dayTimeTable}
             key={dayTimeTable.id}
