@@ -8,7 +8,6 @@ import DatesTimeTable from "./DatesTimeTable";
 const DatesCalendar = (props) => {
   const [dates, setDates] = useState([]);
   const [week, setWeek] = useState(false);
-  // const [renderWeek, setRenderWeek] = useState([]);
 
   const datesCollectionRef = collection(db, "week");
 
@@ -18,9 +17,9 @@ const DatesCalendar = (props) => {
       const toSort = data.docs.map((doc) => ({ ...doc.data() }));
       toSort.sort(weekSorter);
       setDates(toSort);
+      setWeek(true);
     };
     getDates();
-    setWeek(true);
   }, []);
 
   const weekOrder = {
@@ -38,17 +37,6 @@ const DatesCalendar = (props) => {
     let day2 = b.id.slice(0, 5);
     return weekOrder[day1] - weekOrder[day2];
   };
-
-  // console.log(dates);
-
-  // const Week = dates[0];
-  // if (Week && renderWeek.length === 0) {
-  //   const updatedWeek = Object.keys(Week).map(function (key) {
-  //     return Week[key];
-  //   });
-  //   console.log(updatedWeek);
-  //   setRenderWeek(updatedWeek);
-  // }
 
   return (
     <div className={classes.calendar}>
