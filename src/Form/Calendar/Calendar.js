@@ -8,7 +8,6 @@ import TimeTable from "./TimeTable";
 const Calendar = (props) => {
   const [dates, setDates] = useState([]);
   const [weekShow, setWeekShow] = useState(false);
-  const [renderWeek, setRenderWeek] = useState([]);
   const [refreshTime, setRefreshTime] = useState("");
 
   const refreshTimeHandler = (dayID) => {
@@ -27,9 +26,9 @@ const Calendar = (props) => {
       const toSort = data.docs.map((doc) => ({ ...doc.data() }));
       toSort.sort(weekSorter);
       setDates(toSort);
+      setWeekShow(true);
     };
     getDates();
-    setWeekShow(true);
   }, []);
 
   const weekOrder = {
@@ -48,18 +47,9 @@ const Calendar = (props) => {
     return weekOrder[day1] - weekOrder[day2];
   };
 
-  // const Week = dates[0];
-
-  // if (Week && renderWeek.length === 0) {
-  //   const updatedWeek = Object.keys(Week).map(function (key) {
-  //     return Week[key];
-  //   });
-  //   setRenderWeek(updatedWeek);
-  // }
-
   const GetDataHandler = (date) => {
-    console.log(date.day.slice(0, -3));
-    props.onDateData(date.time, date.day.slice(0, -3));
+    const newDayID = date.day.slice(0, -3);
+    props.onDateData(date.time, newDayID);
   };
 
   return (
