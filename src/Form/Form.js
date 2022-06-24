@@ -45,7 +45,6 @@ const Form = (props) => {
       treatment: treatmentSelect,
     };
     createNewDate(userData);
-    // console.log(dayIndex);
   };
 
   const onChangeFormForwardHandler = () => {
