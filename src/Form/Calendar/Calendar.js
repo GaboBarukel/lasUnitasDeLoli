@@ -52,6 +52,11 @@ const Calendar = (props) => {
     props.onDateData(date.time, newDayID);
   };
 
+  //TENER EN CUENTA PARA PRUEBA CON MODAL DE CONFIRMACIÓN
+  const onClickTest = () => {
+    console.log("sip");
+  };
+
   return (
     <div className={classes.calendar}>
       {!weekShow ? (
@@ -67,7 +72,9 @@ const Calendar = (props) => {
           />
         ))
       )}
-      <Button type="submit">Enviar Info</Button>
+      <Button type="submit" onClick={onClickTest}>
+        Enviar Info
+      </Button>
       <Button type="button" onClick={props.onBack}>
         VOLVER
       </Button>

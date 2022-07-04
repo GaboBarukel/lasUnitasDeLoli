@@ -42,6 +42,8 @@ const CalendarAssign = (props) => {
     setShowWeek(true);
   };
 
+  console.log(prevDays);
+
   const parseDates = (inp) => {
     let year = parseInt(inp.slice(0, 4), 10);
     let week = parseInt(inp.slice(6), 10);
@@ -222,13 +224,14 @@ const CalendarAssign = (props) => {
   const dayDocDelete = async (day) => {
     const previousDayDoc = doc(db, "week", day);
     await deleteDoc(previousDayDoc);
+    setNewWeekAvailable(true);
   };
 
   const onDeletePreviousHandler = () => {
     for (let i = 0; i < prevDays.length; i++) {
       dayDocDelete(prevDays[i].id.slice(0, -3));
     }
-    setNewWeekAvailable(true);
+    setPrevDays([]);
   };
 
   return (
@@ -237,7 +240,7 @@ const CalendarAssign = (props) => {
       {updatedCorrectly && (
         <h1>TURNOS DE LA SEMANA ASIGNADOS CORRECTAMENTE!</h1>
       )}
-      {!newWeekAvailable && (
+      {prevDays.length !== 0 && (
         <Button onClick={onDeletePreviousHandler}>
           ELIMINAR SEMANA PREVIA
         </Button>
