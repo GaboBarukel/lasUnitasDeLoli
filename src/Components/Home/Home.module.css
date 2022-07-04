@@ -1,15 +1,30 @@
 .home {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; */
   margin: 0 auto;
+  padding: 0 .5rem;
 }
 
-@media (min-width: 35rem) {
+@media (min-width: 31.25rem) {
   .home {
-    line-height: 1.1;
-    flex: 1 0 20rem;
+    line-height: 1.2;
+    flex: .6 1 15em;
     margin: 0 0.2rem;
-    padding: 0 1rem;
+ 
   }
+}
+
+/* @media (min-width: 598px) and (max-width: 1020px) {
+  .home {
+    line-height: 1.2;
+
+  } 
+} */
+
+@media (min-width: 1920px) {
+  .home {
+    line-height: 2.5;
+  }
+  
 }

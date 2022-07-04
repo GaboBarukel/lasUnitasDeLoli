@@ -1,17 +1,25 @@
 .button {
-  align-self: flex-end;
+  /* align-self: flex-end; */
 
-  /* font-family: "Shadows Into Light", cursive; */
   font-weight: bold;
-  font-size: calc(0.8rem + 1.2vw);
+  font-size: calc(0.8rem + 1vw);
 
-  border: 2px solid #64463dff;
+  border: 1px solid #64463dff;
   border-radius: 8px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
   cursor: pointer;
   background-color: #b7897bff;
-  margin: 2rem 0.5rem;
+  margin: clamp(.2rem, 1.5vw, 5rem);
 }
 
 .button:hover {
   opacity: 0.8;
+}
+
+@media (min-width: 598px) and (max-width: 900px) {
+  .button {
+    font-size: calc(0.8rem + .5vw);
+  }
 }

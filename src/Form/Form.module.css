@@ -1,7 +1,27 @@
 .form {
-  padding: 1rem;
-  flex: 3 1 30rem;
-  max-width: calc(300px + 20vw);
+  margin: 0 auto;
+  flex: .6 1 15em;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 31.25rem) {
+  .form {
+    line-height: 4;
+    margin: 0 0.2rem;
+  }
+}
+
+@media (min-width: 598px) and (max-width: 1020px) {
+  .form {
+    line-height: 1;
+  } 
+}
+
+@media (min-width: 1920px) {
+  .form {
+    line-height: 2.5;
+  }
+  
 }

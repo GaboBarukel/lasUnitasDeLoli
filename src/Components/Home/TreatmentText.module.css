@@ -1,0 +1,25 @@
+h3,
+p {
+  margin: 0 auto;
+}
+
+h3 {
+  letter-spacing: 0.12rem;
+}
+
+p {
+  margin: 0.1rem auto 1rem;
+}
+
+@media (min-width: 31.25rem) {
+  h3, 
+  p {
+  }
+}
+
+@media (min-width: 1150px) {
+  h3,
+  p {
+    line-height: calc(1rem + 1.5vw);
+  }
+}

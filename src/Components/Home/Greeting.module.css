@@ -1,33 +1,36 @@
 .title {
-  margin: 1rem 0.5rem 0.5rem;
-  font-size: calc(1rem + 2.5vw);
+  margin: 0 0.5rem 0.5rem;
+  font-size: calc(1rem + 2.2vw);
   font-weight: bold;
-  letter-spacing: 0.4rem;
+  letter-spacing: 0.2rem;
+  margin: .5rem auto;
 }
 
 .presentation {
-  font-size: calc(1rem + 1.2vw);
-  margin: 0.6rem auto;
+  font-size: calc(1rem + 1vw);
+  margin: 0 auto;
   letter-spacing: 0.1rem;
 }
 
 .final {
-  font-size: calc(1rem + 1.2vw);
+  font-size: calc(1rem + 1vw);
   font-weight: 600;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
+
 }
 
-@media (min-width: 35rem) {
+@media (min-width: 598px) and (max-width: 900px) {
   .title {
-    letter-spacing: 0.7rem;
+    font-size: calc(.9rem + 1.5vw);
   }
-  .presentation {
-    letter-spacing: 0.2rem;
-  }
-}
+  
+.presentation {
+  font-size: calc(1rem + .6vw);
 
-@media (min-width: 49rem) and (max-width: 72rem) {
-  .title {
-    letter-spacing: 0.2rem;
   }
+  
+.final {
+  font-size: calc(1rem + .5vw);
+  margin: .4rem auto;
+}
 }

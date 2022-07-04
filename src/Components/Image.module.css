@@ -1,36 +1,32 @@
 .imgCard {
-  flex: 1 2 40rem;
-  height: calc(200px + 40vw);
-  width: calc(200px + 20vw);
-
+  flex: 0.5 0 18rem;
   margin: 0;
   box-sizing: border-box;
   overflow: hidden;
-  border-radius: 30px;
+
+}
+
+.img {
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin: .7rem auto;
+
   border: 1px solid #64463dff;
   border-radius: 30px;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
-.img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-@media (min-width: 42rem) {
-  .img {
-    width: 100%;
-    height: 100%;
+@media (min-width: 1920px) {
+  .imgCard {
+    flex: .8 0 1rem;
   }
+  
 }
 
-@media (min-width: 35rem) {
-  .imgcard {
-    flex: 1 1 23rem;
-    /* line-height: 1; */
-    margin: 0;
+@media (min-width: 600px) {
+  .img {
+    margin: .7rem auto .7rem .2rem;
   }
 }

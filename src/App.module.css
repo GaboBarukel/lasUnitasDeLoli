@@ -4,7 +4,7 @@
   border-radius: 45px;
   overflow: hidden;
 
-  min-height: 84vh;
+  min-height: auto;
   max-width: 94vw;
   box-sizing: border-box;
   padding: 0.4rem;
@@ -17,7 +17,6 @@
 @media (min-width: 35rem) {
   .app {
     min-height: auto;
-    padding: 1rem;
     margin: 3vw auto;
   }
 }
