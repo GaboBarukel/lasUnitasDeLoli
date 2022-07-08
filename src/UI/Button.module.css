@@ -11,7 +11,7 @@
 
   cursor: pointer;
   background-color: #b7897bff;
-  margin: clamp(.2rem, 1.5vw, 5rem);
+  margin: clamp(.3rem, 1.7vw, 5rem);
 }
 
 .button:hover {

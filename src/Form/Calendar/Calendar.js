@@ -72,11 +72,11 @@ const Calendar = (props) => {
           />
         ))
       )}
-      <Button type="submit" onClick={onClickTest}>
-        Enviar Info
-      </Button>
       <Button type="button" onClick={props.onBack}>
         VOLVER
+      </Button>
+      <Button type="submit" onClick={onClickTest}>
+        Enviar Info
       </Button>
     </div>
   );

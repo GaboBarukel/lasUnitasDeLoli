@@ -1,21 +1,41 @@
 .timeTable {
-  font-size: 2rem;
-  border-radius: 10px;
-  border: 1px solid black;
-  margin: 15px auto;
-}
-
-.timeTable td {
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 10px 20px;
+  font-size: calc(0.9rem + 1.2vw);
+  border-radius: 15px;
+  /* border: 1px solid black; */
+  margin: .4rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
 .thead th {
-  border: 2px solid black;
+  border: .5px solid #222;
+  min-width: 13rem;
   border-radius: 10px;
-  padding: 10px;
+  padding: .2rem 2rem;
+  cursor: pointer;
+  background-color: rgba(236, 142, 104, 0.548);
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
+
+.thead th:hover {
+  opacity: 0.8
+}
+
+.timeTable td {
+  border: .5px solid #222;
+  border-radius: 10px;
+  padding: .1rem .6rem;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.timeTable td:hover {
+  opacity: 0.8
+}
+
 
 .free {
   background-color: #c99e9aff;
@@ -27,4 +47,13 @@
 
 .selected {
   background-color: white;
+}
+
+
+@media (min-width: 31.25rem) /* 500px */{
+  .thead th,
+  .timeTable td {
+    border-radius: 18px;
+    padding: .1rem 1rem;
+  }
 }

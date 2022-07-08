@@ -1,4 +1,5 @@
 import Button from "../../UI/Button";
+import classes from "./TreatmentText.module.css";
 
 const TreatmentText = (props) => {
   return (
@@ -15,14 +16,14 @@ const TreatmentText = (props) => {
       <h3>ESMALTADO SEMIPERMANENTE:</h3>
       <p>
         El concepto “manicura semipermanente” suele hacer referencia a manicuras
-        con esmaltado de larga duración, esta se logra gracias a la aplicación
+        con esmaltado de larga duración. Esta se logra gracias a la aplicación
         de geles esmaltes que secan en cabina uv/led. Tiene una duración de
         entre 7 – 14 días, dependiendo de la actividad que realice la clienta.
       </p>
       <h3>KAPPING:</h3>
       <p>
         El Kapping es una técnica que consiste en aplicar una fina capa de
-        acrílico o gel fortificador sobre la uña que actuará como una barrera
+        acrílico o gel fortificador sobre la uña, que actuará como una barrera
         protectora. Este baño en gel kapping no alarga la uña natura, sino que
         acompaña el crecimiento de la misma y dura hasta 20 días.
       </p>

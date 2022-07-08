@@ -9,7 +9,7 @@ const TreatmentForm = (props) => {
 
   return (
     <div className={classes.treatments}>
-      <h2>TRATAMIENTOS:</h2>
+      <h2>Elegí tu tratamiento:</h2>
       <Input
         id="KAPPING"
         type="radio"
